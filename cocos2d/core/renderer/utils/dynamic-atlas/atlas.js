@@ -104,8 +104,9 @@ cc.js.mixin(Atlas.prototype, {
     },
 
     deleteInnerTexture (texture) {
-        if (texture && this._innerTextureInfos[texture._id]) {
-            delete this._innerTextureInfos[texture._id];
+        if (!texture) return;
+        if (this._innerTextureInfos[texture._id] && texture._id.indexOf("useBitMapCache") === -1) {
+            delete this._innerTextureInfos[texture._uuid];
             this._count--;
         }
     },
