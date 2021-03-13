@@ -344,7 +344,6 @@ export default class TTFAssembler extends Assembler2D {
         if (!frame._original) {
             frame.setRect(cc.rect(0, 0, _canvas.width, _canvas.height));
         }
-        frame._texture._uuid = comp.string + "_" + comp.node.color + "_" + comp.fontSize + comp.fontFamily;
         this.packToDynamicAtlas(comp, frame);
     }
 

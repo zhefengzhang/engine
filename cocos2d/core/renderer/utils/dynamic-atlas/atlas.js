@@ -28,7 +28,7 @@ cc.js.mixin(Atlas.prototype, {
     insertSpriteFrame (spriteFrame) {
         let rect = spriteFrame._rect,
             texture = spriteFrame._texture,
-            info = this._innerTextureInfos[texture._uuid];
+            info = this._innerTextureInfos[texture._id];
 
         let sx = rect.x, sy = rect.y;
 
@@ -70,7 +70,7 @@ cc.js.mixin(Atlas.prototype, {
 
             this._texture.drawTextureAt(texture, this._x, this._y);
 
-            this._innerTextureInfos[texture._uuid] = {
+            this._innerTextureInfos[texture._id] = {
                 x: this._x,
                 y: this._y,
                 texture: texture
@@ -107,12 +107,6 @@ cc.js.mixin(Atlas.prototype, {
         if (texture && this._innerTextureInfos[texture._id]) {
             delete this._innerTextureInfos[texture._id];
             this._count--;
-        }
-
-        for (var i in this._innerSpriteFrames) {
-            if (this._innerSpriteFrames[i]._texture._uuid === texture._uuid) {
-                this._innerSpriteFrames.splice(i);
-            }
         }
     },
 
